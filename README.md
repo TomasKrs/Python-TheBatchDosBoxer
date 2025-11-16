@@ -1,6 +1,9 @@
 # THE BATCH (DOS)BOX(ER) (v1.0)
 Programátor: AI  -----   PromptMaster: TomasKrs
 
+<img width="834" height="447" alt="obrázok" src="https://github.com/user-attachments/assets/96c6a176-92a0-401c-bf7b-307b363a1ad0" />
+
+
 ## Účel programu
 
 **The Batch (DOS)Box(er)** je skript určený na **automatizáciu konfigurácie a správy hier** emulovaných prostredníctvom DOSBoxu. Je navrhnutý špeciálne pre centralizované a **prenosné (portable)** kolekcie hier (napr. na USB disku) a pre spoluprácu s manažérmi profilov ako je DBGL (DOSBox Game Launcher).
