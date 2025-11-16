@@ -2,7 +2,7 @@
 Programátor: AI  -----   PromptMaster: TomasKrs
 
 <img width="834" height="447" alt="obrázok" src="https://github.com/user-attachments/assets/96c6a176-92a0-401c-bf7b-307b363a1ad0" />
-
+<img width="759" height="447" alt="obrázok" src="https://github.com/user-attachments/assets/7c8273aa-9406-4e59-a067-b1bb08d7e870" />
 
 ## Účel programu
 
