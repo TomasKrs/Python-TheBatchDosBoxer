@@ -1,0 +1,54 @@
+# THE BATCH (DOS)BOX(ER) (v1.0)
+
+## Program Purpose
+
+**The Batch (DOS)Box(er)** is a script designed to **automate the configuration and management of games** emulated via DOSBox. It is specifically built for centralized and **portable** game collections (e.g., on a USB drive) and for seamless integration with profile managers like DBGL (DOSBox Game Launcher).
+
+Its primary function is to transform the absolute paths found in DBGL configurations (which are tied to a specific PC) into **relative paths**. This ensures that games can be launched directly from their folder via their own startup script (`!start.bat`), regardless of the drive or directory where the central DOSBox installation resides.
+
+The tool uses a core configuration file named: **`theBatchDosBoxer.ini`**.
+
+The program operates in two main modes:
+1.  **SINGLE:** Working with the current game folder.
+2.  **BATCH:** Batch operations across all subfolders (games) simultaneously.
+
+---
+
+## 💻 Menu Structure and Functions
+
+The program automatically starts in **SINGLE**, **BATCH**, or **UNCERTAIN** mode, depending on the content of the current directory (if automatic detection is enabled).
+
+### A. Global Settings (Choice A)
+
+Settings define critical paths and tool behaviour. All paths are continuously checked for existence.
+
+| # | Setting | Type | Description |
+| :---: | :--- | :--- | :--- |
+| **1** | Emulator Path | File Path | Absolute path to the central DOSBox.exe. **Crucial for calculating the relative path in `!start.bat`.** |
+| **2** | DBGL Root Path | Folder Path | Absolute path to the main DBGL folder where the `profiles/` directory is located. |
+| **3** | Temp Folder for ZIP | Folder Path | Temporary directory used when creating ZIP archives. |
+| **4** | ZIP Archives Destination | Folder Path | Folder where the resulting ZIP archives are saved. |
+| **5** | Preserve Mount C | ENABLED/DISABLED | If set to `DISABLED`, the `MOUNT C` command is removed from `dosbox.conf`, which is typical if you only want `MOUNT D` (CD-ROM). |
+| **6** | Auto Mode Detection | ENABLED/DISABLED | Defines whether the program automatically determines the mode (SINGLE/BATCH) on startup. |
+| **7** | DOSBox ZIP Structure | FLAT/SUBDIR | Defines how the central DOSBox is included in the portable ZIP archive: `FLAT` (in the game root) or `SUBDIR` (in a `dosbox/` subfolder). |
+
+### B. SINGLE Mode (Working with the current folder)
+
+| # | Function | Description |
+| :---: | :--- | :--- |
+| **1** | Create Base Folders | Creates the structure: `cd/`, `docs/`, `drives/c/`. |
+| **2** | Create/Update `!start.bat` only | Creates a local BAT file that calls the central DOSBox.exe using a **dynamic relative path**. |
+| **3** | Create/Update `dosbox.conf` only | **Finds the DBGL profile** based on the MOUNT C path, copies it as `dosbox.conf`, and **relativizes all MOUNT and IMGMOUNT paths** based on the local structure. |
+| **4** | Complete Setup | Combines actions 1, 2, and 3. |
+| **5** | Delete Backups | Deletes files with the `.bak` extension. |
+| **6** | Delete Configuration | Deletes `!start.bat`, `dosbox.conf`, and `.bak` files. |
+| **7** | Create PORTABLE ZIP | Creates an archive with the game **including a copy of DOSBox** (based on FLAT/SUBDIR structure) and a modified `!start.bat`. |
+| **8** | Create CLEAN ZIP | Creates an archive with the game **without DOSBox** (intended for launching via .conf file association). |
+| **9** | BATCH OPERATIONS (Only in UNCERTAIN mode) | Switches to BATCH mode. |
+
+### C. BATCH Mode (Batch Operations)
+
+All functions 1 through 8 perform the same action as in SINGLE mode, but they are applied to **all subfolders** (that are not key to the tool) in the current directory.
+
+In case of errors, a log file named `batch_operations_log.txt` is generated.
+
