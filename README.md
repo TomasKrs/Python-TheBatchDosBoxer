@@ -1,4 +1,6 @@
 # THE BATCH (DOS)BOX(ER) (v1.0)
+Programátor: AI
+PromptMaster: TomasKrs
 
 ## Účel programu
 
